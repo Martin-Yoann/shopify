@@ -1,0 +1,331 @@
+
+
+<div class="wholesale-banner cf">
+    <img class=" hidden-xs " src="{{ section.settings.bannerdesk  | img_url: '2400x'  }}" />
+    <img class=" visible-xs" src="{{ section.settings.bannermobile  | img_url: '1200x'  }}" />
+
+    <div class="vertical">
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.subtitle }}</p>
+      <a href="#" class="btn modal-toggle wholesale-modal-open">view price sheet</a>
+    </div>
+</div>
+
+
+<div class="bulk-discounts-list">
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d1 }}</span>
+    <span>{{ section.settings.d1price }}</span>
+    <span>{{ section.settings.d1code }}</span>
+  </div>
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d2 }}</span>
+    <span>{{ section.settings.d2price }}</span>
+    <span>{{ section.settings.d2code }}</span>
+  </div>
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d3 }}</span>
+    <span>{{ section.settings.d3price }}</span>
+    <span>{{ section.settings.d3code }}</span>
+  </div>
+</div>
+
+
+
+{% comment %}
+Source: https://gist.github.com/carolineschnapp/9122054
+If you are not on a collection page, do define which collection to use in the order form.
+Use the following assign statement, replace 'your-collection-handle-here' with your collection handle.
+{% assign collection = collections.your-collection-handle-here %}
+Use the assign statement outside of this comment block at the top of your template.
+{% endcomment %}
+
+
+<div class="stoggles-wholesale-form">
+
+{% assign collection = collections.stoggles %}
+{% paginate collection.products by 100 %}
+
+<form action="/cart" method="post">
+  
+  {% if collection.products_count > 0 %}
+    <div class="wholesale-top-add">
+      <input class="wholesale-add-to-cart btn" type="submit" value="add selections to cart" />
+    </div>
+  {% else %}
+    <h1>{% if template contains 'page' %}{{ page.title }}{% else %}{{ collection.title }}{% endif %}</h1>
+  {% endif %}
+
+  {% if template contains 'page' and page.content.size > 0 %}
+    <div class="rte">
+      {{ page.content }}
+    </div>  
+  {% elsif collection.description.size > 0 %}
+    <div class="rte">
+      {{ collection.description }}
+    </div>
+  {% endif %}
+
+  {% if collection.products_count > 0 %}
+
+    <table>
+      <tbody>
+         
+         <tr class="table-header">
+            <td style="text-align:left;">Image</td>
+            <td>Shape</td>
+            <td>Color</td>
+            <td>Lens Type</td>
+            <td>SKU</td>
+            <td>Retail Price</td>
+            <td>Quantity</td>
+
+         </tr>
+
+      {% for product in collection.products %}
+        {% if product.available %}
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <tr class="{% cycle 'pure-table-odd', 'pure-table-even' %}">
+                <td>
+                  <a style="display:block;" href="{{ variant.url | collection }}">
+                    <img src="{{ variant.image | default: product.featured_image | img_url: 'large' }}" alt="{{ variant.title | escape }}" />
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {% comment %}{{ product.title }}{% unless variant.title contains 'Default' %} - {{ variant.title }}{% endunless %}{% unless variant.sku == blank %} - {{ variant.sku }}{% endunless %}{% endcomment %}
+                   {% comment %}{{ product.title }}{% endcomment %}
+                   {% if product.title contains "Round" %}
+                   Round
+                   {% endif %}
+                   {% if product.title contains "Square" %}
+                   Square
+                   {% endif %}
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {{ variant.option1 }}
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {{ variant.option2 }}
+                  </a>
+                </td>
+                <td>
+                  <a style="color: #aaa;" href="{{ variant.url | collection }}">
+                   {{ variant.sku }}
+                  </a>
+                </td>
+                <td style="">
+                   {{ variant.price | money }}
+                </td>
+                <td style="text-align:right;">
+                 
+                  <label for="updates_{{ item.key }}" class="visually-hidden">{{ 'cart.label.quantity' | t }}</label>
+                    <input type="number" id="updates_{{ item.key }}" class="cart__product-qty stoggles-wholesale-qty" value="0"  max="{{ variant.inventory_quantity }}" data-id="{{ item.key }}" name="updates[{{ variant.id }}]" onfocus="this.select()">
+
+                </td>
+              </tr>
+
+            {% else %}
+
+              <tr class="{% cycle 'pure-table-odd', 'pure-table-even' %}">
+                <td>
+                  <a style="display:block;" href="{{ variant.url | collection }}">
+                    <img src="{{ variant.image | default: product.featured_image | img_url: 'large' }}" alt="{{ variant.title | escape }}" />
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {% comment %}{{ product.title }}{% unless variant.title contains 'Default' %} - {{ variant.title }}{% endunless %}{% unless variant.sku == blank %} - {{ variant.sku }}{% endunless %}{% endcomment %}
+                   {% comment %}{{ product.title }}{% endcomment %}
+                   {% if product.title contains "Round" %}
+                   Round
+                   {% endif %}
+                   {% if product.title contains "Square" %}
+                   Square
+                   {% endif %}
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {{ variant.option1 }}
+                  </a>
+                </td>
+                <td>
+                  <a style="" href="{{ variant.url | collection }}">
+                   {{ variant.option2 }}
+                  </a>
+                </td>
+                <td>
+                  <a style="color: #aaa;" href="{{ variant.url | collection }}">
+                   {{ variant.sku }}
+                  </a>
+                </td>
+                <td style="">
+                   {{ variant.price | money }}
+                </td>
+                <td style="text-align: center; opacity: .5;">
+                 
+                  SOLD OUT
+
+                </td>
+              </tr>
+
+            {% endif %}
+
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+    
+    <div class="wholesale-bottom-add">
+      <input class="wholesale-add-to-cart btn" type="submit" value="add selections to cart" />
+    </div>
+  
+  {% else %}
+    <p>There are no products in this view.</p>
+  {% endif %}
+
+</form>
+
+{% endpaginate %}
+
+
+</div>
+
+
+
+<br><br><br><br>
+{% comment %}
+
+<div class="bulk-discounts-list">
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d1 }}</span>
+    <span>{{ section.settings.d1price }}</span>
+    <span>{{ section.settings.d1code }}</span>
+  </div>
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d2 }}</span>
+    <span>{{ section.settings.d2price }}</span>
+    <span>{{ section.settings.d2code }}</span>
+  </div>
+  <div class="bulk-discounts">
+    <span>{{ section.settings.d3 }}</span>
+    <span>{{ section.settings.d3price }}</span>
+    <span>{{ section.settings.d3code }}</span>
+  </div>
+</div>
+
+{% endcomment %}
+
+<div class="wholesale-modal">
+  <img  src="https://cdn.shopify.com/s/files/1/0413/5521/5004/files/Screen_Shot_2021-03-01_at_4.29.46_PM.png?v=1614644999">
+</div>
+
+
+
+{% if collection.products_count > 0 %}
+<script>
+jQuery(function($) {
+  $('table .quantity:first').focus();
+  $('[max]').change(function() {
+    var max = parseInt($(this).attr('max'), 10);
+    var value = parseInt($(this).val(), 10) || 0;
+    if (value > max) { 
+      alert('We only have ' + max + ' of this item in stock');
+      $(this).val(max); 
+    }    
+  });
+
+
+});
+</script>
+{% endif %}
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Wholesale Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bannerdesk",
+        "label": "wholesale page banner desk"
+      },
+      {
+        "type": "image_picker",
+        "id": "bannermobile",
+        "label": "wholesale banner mobile"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "whoelsale title"
+      },
+      {
+        "type": "html",
+        "id": "subtitle",
+        "label": "wholesale subtitle"
+      },
+      {
+        "type": "text",
+        "id": "d1",
+        "label": "discount 1 title"
+      },
+      {
+        "type": "text",
+        "id": "d1price",
+        "label": "discount 1 price"
+      },
+      {
+        "type": "html",
+        "id": "d1code",
+        "label": "discount 1 code"
+      },
+      {
+        "type": "text",
+        "id": "d2",
+        "label": "discount 2 title"
+      },
+      {
+        "type": "text",
+        "id": "d2price",
+        "label": "discount 2 price"
+      },
+      {
+        "type": "html",
+        "id": "d2code",
+        "label": "discount 2 code"
+      },
+      {
+        "type": "text",
+        "id": "d3",
+        "label": "discount 3 title"
+      },
+      {
+        "type": "text",
+        "id": "d3price",
+        "label": "discount 3 price"
+      },
+      {
+        "type": "html",
+        "id": "d3code",
+        "label": "discount 3 code"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Wholesale Add to cart",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

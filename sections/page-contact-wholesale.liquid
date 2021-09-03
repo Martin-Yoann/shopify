@@ -1,0 +1,201 @@
+
+
+
+<div class="genki-wholesale">
+      
+
+          <h1 style="color: {{ section.settings.color }};">{{ page.title }}</h1>
+          <div  style="color: {{ section.settings.color }};">{{ page.content }}</div>
+
+
+          <div class="quick-contact-form wholesale-contact-form">
+                {% form 'contact' %}
+
+                {% comment %}
+                  Successful message
+                {% endcomment %}
+                {% if form.posted_successfully? %}
+                  <p class="note form-success">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                {% endif %}
+
+                {{ form.errors | default_errors }}
+
+                <div class="grid grid--small">
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                      <input required type="text" id="ContactFormName" class="input-full" name="contact[{{ 'contact.form.name' | t }}]" placeholder="Full Name" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormCompany" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                      <input type="text" id="ContactFormCompany" class="input-full" name="contact[company]" placeholder="Company" autocapitalize="words" value="">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormEmail" class="hidden-label">Email Address</label>
+                      <input required type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="Email Address" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+                    <input required type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ 'contact.form.phone' | t }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormAddress" class="hidden-label">Address</label>
+                      <input type="text" id="ContactFormAddress" class="input-full" name="contact[address]" placeholder="Address" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormAddress2" class="hidden-label">Address 2</label>
+                      <input type="text" id="ContactFormAddress" class="input-full" name="contact[address2]" placeholder="Address 2" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormCity" class="hidden-label">City</label>
+                      <input type="text" id="ContactFormCity" class="input-full" name="contact[city]" placeholder="City" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+
+                    <div class="grid__item large--one-whole" style="text-align: left;  padding: 15px;">
+                    <label for="ContactFormState">State:</label>
+                    <select id="ContactFormState" name="contact[State]">
+                      <option value="" selected="selected" disabled>Select</option>
+                      <option value="AL">Alabama</option> 
+                      <option value="AK">Alaska</option> 
+                      <option value="AZ">Arizona</option> 
+                      <option value="AR">Arkansas</option> 
+                      <option value="CA">California</option> 
+                      <option value="CO">Colorado</option> 
+                      <option value="CT">Connecticut</option> 
+                      <option value="DE">Delaware</option> 
+                      <option value="DC">District Of Columbia</option> 
+                      <option value="FL">Florida</option> 
+                      <option value="GA">Georgia</option> 
+                      <option value="HI">Hawaii</option> 
+                      <option value="ID">Idaho</option> 
+                      <option value="IL">Illinois</option> 
+                      <option value="IN">Indiana</option> 
+                      <option value="IA">Iowa</option> 
+                      <option value="KS">Kansas</option> 
+                      <option value="KY">Kentucky</option> 
+                      <option value="LA">Louisiana</option> 
+                      <option value="ME">Maine</option> 
+                      <option value="MD">Maryland</option> 
+                      <option value="MA">Massachusetts</option> 
+                      <option value="MI">Michigan</option> 
+                      <option value="MN">Minnesota</option> 
+                      <option value="MS">Mississippi</option> 
+                      <option value="MO">Missouri</option> 
+                      <option value="MT">Montana</option> 
+                      <option value="NE">Nebraska</option> 
+                      <option value="NV">Nevada</option> 
+                      <option value="NH">New Hampshire</option> 
+                      <option value="NJ">New Jersey</option> 
+                      <option value="NM">New Mexico</option> 
+                      <option value="NY">New York</option> 
+                      <option value="NC">North Carolina</option> 
+                      <option value="ND">North Dakota</option> 
+                      <option value="OH">Ohio</option> 
+                      <option value="OK">Oklahoma</option> 
+                      <option value="OR">Oregon</option> 
+                      <option value="PA">Pennsylvania</option> 
+                      <option value="RI">Rhode Island</option> 
+                      <option value="SC">South Carolina</option> 
+                      <option value="SD">South Dakota</option> 
+                      <option value="TN">Tennessee</option> 
+                      <option value="TX">Texas</option> 
+                      <option value="UT">Utah</option> 
+                      <option value="VT">Vermont</option> 
+                      <option value="VA">Virginia</option> 
+                      <option value="WA">Washington</option> 
+                      <option value="WV">West Virginia</option> 
+                      <option value="WI">Wisconsin</option> 
+                      <option value="WY">Wyoming</option>
+                    </select>
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormZip" class="hidden-label">Zip Code</label>
+                      <input type="text" id="ContactFormZip" class="input-full" name="contact[zip]" placeholder="Zip Code" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+
+                    <div class="grid__item large--one-whole">
+                      <label for="ContactFormCountry" class="hidden-label">Country</label>
+                      <input type="text" id="ContactFormCountry" class="input-full" name="contact[country]" placeholder="Country" autocorrect="off" autocapitalize="off" value="">
+                    </div>
+
+
+                 {% comment %} <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+                  <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ 'contact.form.phone' | t }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">{% endcomment %}
+
+                  <label for="ContactFormAboutCompany" class="hidden-label">Please tell us about your company</label>
+                  <textarea rows="10" id="ContactAboutCompany" class="input-full" name="contact[Please tell us about your company]" placeholder="Please tell us about your company">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+                  <div class="grid__item large--one-whole" style="text-align: left; padding: 15px;">
+                    <label for="ContactFormState">Business Type:</label>
+                    <select id="ContactFormState" name="contact[Business Type]">
+                      <option value="" selected="selected" disabled>Select</option>
+                      <option value="Internet Retailer">Internet Retailer</option> 
+                      <option value="Retailer">Retailer</option> 
+                      <option value="Distributor">Distributor</option> 
+                      <option value="Restaurant/Hotel/Resort">Restaurant/Hotel/Resort</option> 
+                      <option value="Other">Other</option> 
+                    </select>
+                    </div>
+
+                  <label for="ContactFormHowDidYouHear" class="hidden-label">How did you hear about us?</label>
+                  <textarea rows="10" id="ContactHowDidYouHear" class="input-full" name="contact[How did you hear about us?]" placeholder="How did you hear about us?">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+                  <div class="grid__item large--one-whole">
+                    <label for="ContactFormWebsite" class="hidden-label">Your Website</label>
+                    <input type="text" id="ContactFormWebsite" class="input-full" name="contact[website]" placeholder="Website" autocorrect="off" autocapitalize="off" value="">
+                  </div>
+
+
+                  <input type="submit" class="contact-btn" value="{{ 'contact.form.send' | t }}">
+
+                </div>
+
+              {% endform %}
+          </div>
+
+
+     
+</div>
+
+
+{% schema %}
+  {
+    "name": "Genki Contact Wholesale",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Page Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Left Image"
+      },
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Color BG"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Color text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Genki Contact",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

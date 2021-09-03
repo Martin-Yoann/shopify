@@ -1,0 +1,68 @@
+{% for block in section.blocks %}
+	{% if page.handle == block.settings.page %}
+    <div class="page-banner">
+      <img class="hidden-xs" src="{{ block.settings.image | img_url: '2000x' }}">
+      <img class="visible-xs" src="{{ block.settings.image | img_url: '2000x' }}">
+      <div class="page-banner-copy">
+        <div class="vertical">
+          <h1>{{ block.settings.btitle }}</h1>
+          <p>{{ block.settings.bsub }}</p>
+        </div>
+      </div>
+    </div>
+	{% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Page Banner Images",
+	"max_blocks": 10,
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Featured Image",
+      "settings": [
+        {
+          "id": "page",
+          "type": "page",
+          "label": "Select Page for Image"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+       		"label": "Page Featured Image Desk"
+        },
+        {
+          "id": "imagemobile",
+          "type": "image_picker",
+          "label": "Page Featured Image Mobile"
+        },
+        {
+          "id": "btitle",
+          "type": "text",
+          "label": "Banner title"
+        },
+        {
+          "id": "bsub",
+          "type": "text",
+          "label": "Banner subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Featured Images",
+      "category": "images",
+      "blocks": [
+        { 
+          "type": "select"
+        },
+        {
+          "type": "select"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

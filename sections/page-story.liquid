@@ -1,0 +1,740 @@
+
+
+
+
+
+<div class="genki-story cf">
+
+{% for block in section.blocks %}
+
+  {% case block.type %}
+
+
+    <!-- blocks -->
+    {% when 'storysplit' %}
+    <div class="story-split">
+      <div class="story-split-content">
+        <img src="{{ block.settings.img | img_url: '3000x' }}" >
+      </div>
+      <div class="story-split-content" style="background: {{ block.settings.bg }}">
+        <div class="vertical">
+          <h1 style="color: {{ block.settings.color }}">{{ block.settings.title }}</h1>
+          <h4 style="color: {{ block.settings.color }};">{{ block.settings.subtitle }}</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- blocks -->
+    {% when 'storyhero' %}
+    <div class="storyhero">
+      <img class="banner-img hidden-xs" src="{{ block.settings.img | img_url: '3000x' }}"  style=" width: 100%;">
+      <img class="banner-img visible-xs" src="{{ block.settings.imgmobile | img_url: '1000x' }}"  style=" width: 100%;">
+      <div class="vertical">
+        <h1>{{ block.settings.title }}</h1>
+      </div>
+    </div>
+
+
+
+    <!-- blocks -->
+    {% when 'infoblock' %}
+    <div class="info-block" style="background: {{ block.settings.bg }};">
+      <img src="{{ block.settings.img | img_url: '600x' }}">
+      <h1 style="color: {{ block.settings.color }};">{{ block.settings.title }}</h1>
+      <h1 class="copy" style="color: {{ block.settings.color }};">{{ block.settings.infoblock }}</h1>
+    </div>
+
+
+    <!-- blocks -->
+    {% when 'productslider' %}
+    <div class="prod-slider-wrapper">
+      {% if  block.settings.slidertitle != blank %}
+      <div class="slider-titles">
+        <h1>{{ block.settings.slidertitle  }}</h1>
+        
+        <a href="{{ block.settings.link2 }}"  style="color: #8cb7d7;">{{ block.settings.link2title }}</a>
+        <span style="margin: 0 30px; opacity: .25;">|</span>
+        <a href="{{ block.settings.link1 }}" style="color: #d7a559;">{{ block.settings.link1title }}</a>
+        
+      </div>
+      {% endif %}
+      <div class="products-caro">
+
+        {% if  block.settings.product1 != blank %}
+         <div class="carousel-cell">
+            <a href="{{ block.settings.product1link }}">
+              <div class="pet"></div>
+              
+              <img class="img1" src="{{ block.settings.product1img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product1btnbg }};">{{ block.settings.product1 }}</h2>
+              <div class="btn shop-now-btn" style="background: {{ block.settings.product1btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product2 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product2link }}">
+              <div class="pet"></div>
+              <img class="img2" src="{{ block.settings.product2img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product2btnbg }};">{{ block.settings.product2 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product2btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product3 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product3link }}">
+              <div class="pet"></div>
+              <img class="img3" src="{{ block.settings.product3img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product3btnbg }};">{{ block.settings.product3 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product3btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product4 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product4link }}">
+              <div class="pet"></div>
+              <img class="img4" src="{{ block.settings.product4img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product4btnbg }};">{{ block.settings.product4 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product4btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product5 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product5link }}">
+              <div class="pet"></div>
+              <img class="img5" src="{{ block.settings.product5img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product5btnbg }};">{{ block.settings.product5 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product5btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product6 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product6link }}">
+              <div class="pet"></div>
+              <img class="img6" src="{{ block.settings.product6img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product6btnbg }};">{{ block.settings.product6 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product6btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+        {% if  block.settings.product7 != blank %}
+          <div class="carousel-cell">
+            <a href="{{ block.settings.product7link }}">
+              <div class="pet"></div>
+              <img class="img7"  src="{{ block.settings.product7img | img_url: '900x' }}"  style=" width: 100%;">
+              <h2 style="color: {{ block.settings.product7btnbg }};">{{ block.settings.product7 }}</h2>
+              <div class="btn shop-now-btn"  style="background: {{ block.settings.product7btnbg }};">Shop Now</div>
+            </a>
+          </div>
+        {% endif %}
+
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- blocks -->
+    {% when 'wanderlustblock' %}
+    
+    <div style="height: 110px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C265.79,-35.03 247.74,164.30 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #e0736a;"></path></svg></div>
+    <div class="wanderlust-contain">
+      <h1>{{ block.settings.title }}</h1>
+      <h2>{{ block.settings.subtitle }}</h2>
+    </div>
+    <div style="height: 110px; overflow: hidden; background: #e0736a;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C213.31,-29.11 246.61,176.14 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: white;"></path></svg></div>
+
+
+
+
+    <!-- blocks -->
+    {% when 'textcalloutblock' %}
+    <div class="text-callout-block">
+      {% if block.settings.title  != blank %}
+      <h1>{{ block.settings.title }}</h1>
+      {% endif %}
+      {% if block.settings.subtitle  != blank %}
+      <div style="paddig-bottom: 30px; font-weight: 400;">{{ block.settings.subtitle }}</div>
+      {% endif %}
+
+      {% if block.settings.linktext  != blank %}
+      <a class="btn stoggle-modal-open" href="{{ block.settings.link }}" target="_blank">{{ block.settings.linktext }}</a>
+      {% endif %}
+    </div>
+
+
+
+
+    <!-- blocks -->
+    {% when 'ticker' %}
+    <div class="ticker-wrap">
+      <div class="ticker">
+         <div class="ticker__item">{{ block.settings.ticker1 }}</div>
+         <div class="ticker__item">{{ block.settings.ticker2 }}</div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- blocks -->
+    {% when 'reviews' %}
+    <div class="reviews-area masked-banner2">
+      <div class="wrapper">
+        <div class="reviews-block">
+          <p>{{  block.settings.review1 }}</p>
+        </div>
+        <div class="reviews-block">
+          <p>{{  block.settings.review2 }}</p>
+        </div>
+        <div class="reviews-block">
+          <p>{{  block.settings.review3 }}</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- blocks -->
+    {% when 'splitblock' %}
+    <div class="genki-split">
+      {% if block.settings.imgleft  == true %}
+      <div class="split-content">
+        <img src="{{ block.settings.img | img_url: '1600x' }}">
+      </div>
+      {% endif %}
+      <div class="split-content hidden-xs">
+        <div class="vertical">
+          <h1 class="waypoint fade-in ">{{ block.settings.title }}</h1>
+          {% if block.settings.copy  != blank %}
+          <p>{{ block.settings.copy }}</p>
+          {% endif %}
+          {% if block.settings.btn  != blank %}
+          <a class="btn" style="background: {{ block.settings.btnbg }}" href="{{ block.settings.btnlink }}">{{ block.settings.btn }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if block.settings.imgleft  != true %}
+      <div class="split-content">
+        <img src="{{ block.settings.img | img_url: '1600x' }}">
+      </div>
+      {% endif %}
+
+      <div class="split-content visible-xs">
+          <h1>{{ block.settings.title }}</h1>
+          {% if block.settings.copy  != blank %}
+          <p>{{ block.settings.copy }}</p>
+          {% endif %}
+          {% if block.settings.btn  != blank %}
+          <a class="btn"  style="background: {{ block.settings.btnbg }}"  href="{{ block.settings.btnlink }}">{{ block.settings.btn }}</a>
+          {% endif %}
+      </div>
+     
+    </div>
+
+
+
+
+    <!-- blocks -->
+    {% when 'iconsblock' %}
+    <div class="iconsblock" style="background: {{ block.settings.iconsbg }};">
+      <img class="icon" src="{{ block.settings.icon1 | img_url: '400x' }}">
+      <img class="icon" src="{{ block.settings.icon2 | img_url: '400x' }}">
+      <img class="icon" src="{{ block.settings.icon3 | img_url: '400x' }}">
+      <img class="icon" src="{{ block.settings.icon4 | img_url: '400x' }}">
+      <img class="icon" src="{{ block.settings.icon5 | img_url: '400x' }}">
+      <img class="icon" src="{{ block.settings.icon6 | img_url: '400x' }}">
+    </div>
+
+
+
+
+    <!-- blocks -->
+    {% when 'pressblock' %}
+    <div class="pressblock">
+      <div class="wrapper">
+        <h1>As seen in</h1>
+        <div class="press-img"><img src="{{ block.settings.press1 | img_url: '900x' }}"  ></div>
+        <div class="press-img hidden-xs"><img src="{{ block.settings.press2 | img_url: '900x' }}" ></div>
+        <div class="press-img"><img src="{{ block.settings.press3 | img_url: '900x' }}" ></div>
+        <div class="press-img"><img src="{{ block.settings.press4 | img_url: '900x' }}" ></div>
+        <div class="press-img"><img src="{{ block.settings.press5 | img_url: '900x' }}" ></div>
+        
+      </div>
+    </div>
+
+
+
+  {% endcase %}
+
+{% endfor %}
+</div>
+
+
+
+
+
+{% schema %}
+  {
+    "blocks": [
+      {
+        "type": "storysplit",
+        "name": "Story split block",
+        "settings": [
+          {
+            "id": "img",
+            "type": "image_picker",
+            "label": "hero img"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "callout title"
+          },
+          {
+            "id": "subtitle",
+            "type": "text",
+            "label": "callout subtitle"
+          },
+          {
+            "id": "color",
+            "type": "color",
+            "label": "callout text color"
+          },
+          {
+            "id": "bg",
+            "type": "color",
+            "label": "callout bg color"
+          }
+        ]
+      },
+      {
+        "type": "storyhero",
+        "name": "Story Hero",
+        "settings": [
+          {
+            "id": "img",
+            "type": "image_picker",
+            "label": " Image"
+          },
+          {
+            "id": "imgmobile",
+            "type": "image_picker",
+            "label": "Image Mobile"
+          },
+          {
+            "id": "title",
+            "type": "html",
+            "label": "Banner Title"
+          }
+        ]
+      },
+      {
+        "type": "textcalloutblock",
+        "name": "Text Callout Blocks",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "subtitle",
+            "type": "html",
+            "label": "Sub Title"
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link Btn"
+          },
+          {
+            "id": "linktext",
+            "type": "text",
+            "label": "Link Text"
+          }
+        ]
+      },
+      {
+        "type": "productslider",
+        "name": "Product Slider",
+        "settings": [
+          {
+            "id": "slidertitle",
+            "type": "text",
+            "label": "slider title"
+          },
+          {
+            "id": "link1",
+            "type": "url",
+            "label": "link1"
+          },
+          {
+            "id": "link1title",
+            "type": "text",
+            "label": "link1 title"
+          },
+          {
+            "id": "link2",
+            "type": "url",
+            "label": "link2"
+          },
+          {
+            "id": "link2title",
+            "type": "text",
+            "label": "link2 title"
+          },
+          {
+            "id": "product1",
+            "type": "text",
+            "label": "product1"
+          },
+          {
+            "id": "product1img",
+            "type": "image_picker",
+            "label": "product1 img"
+          },
+          {
+            "id": "product1btnbg",
+            "type": "color",
+            "label": "product1 btn bg"
+          },
+          {
+            "id": "product1link",
+            "type": "url",
+            "label": "product1 link"
+          },
+          {
+            "id": "product2",
+            "type": "text",
+            "label": "product2"
+          },
+          {
+            "id": "product2img",
+            "type": "image_picker",
+            "label": "product2 img"
+          },
+          {
+            "id": "product2btnbg",
+            "type": "color",
+            "label": "product2 btn bg"
+          },
+          {
+            "id": "product2link",
+            "type": "url",
+            "label": "product2 link"
+          },
+          {
+            "id": "product3",
+            "type": "text",
+            "label": "product3"
+          },
+          {
+            "id": "product3img",
+            "type": "image_picker",
+            "label": "product3 img"
+          },
+          {
+            "id": "product3btnbg",
+            "type": "color",
+            "label": "product3 btn bg"
+          },
+          {
+            "id": "product3link",
+            "type": "url",
+            "label": "product3 link"
+          },
+          {
+            "id": "product4",
+            "type": "text",
+            "label": "product4"
+          },
+          {
+            "id": "product4img",
+            "type": "image_picker",
+            "label": "product4 img"
+          },
+          {
+            "id": "product4btnbg",
+            "type": "color",
+            "label": "product4 btn bg"
+          },
+          {
+            "id": "product4link",
+            "type": "url",
+            "label": "product4 link"
+          },
+          {
+            "id": "product5",
+            "type": "text",
+            "label": "product5"
+          },
+          {
+            "id": "product5img",
+            "type": "image_picker",
+            "label": "product5 img"
+          },
+          {
+            "id": "product5btnbg",
+            "type": "color",
+            "label": "product5 btn bg"
+          },
+          {
+            "id": "product5link",
+            "type": "url",
+            "label": "product5 link"
+          },
+          {
+            "id": "product6",
+            "type": "text",
+            "label": "product6"
+          },
+          {
+            "id": "product6img",
+            "type": "image_picker",
+            "label": "product6 img"
+          },
+          {
+            "id": "product6btnbg",
+            "type": "color",
+            "label": "product6 btn bg"
+          },
+          {
+            "id": "product6link",
+            "type": "url",
+            "label": "product6 link"
+          },
+          {
+            "id": "product7",
+            "type": "text",
+            "label": "product7"
+          },
+          {
+            "id": "product7img",
+            "type": "image_picker",
+            "label": "product7 img"
+          },
+          {
+            "id": "product7btnbg",
+            "type": "color",
+            "label": "product7 btn bg"
+          },
+          {
+            "id": "product7link",
+            "type": "url",
+            "label": "product7 link"
+          }
+        ]
+      },
+      {
+        "type": "reviews",
+        "name": "Reviews area",
+        "settings": [
+          {
+            "id": "review1",
+            "type": "html",
+            "label": "Review 1"
+          },
+          {
+            "id": "review2",
+            "type": "html",
+            "label": "Review 2"
+          },
+          {
+            "id": "review3",
+            "type": "html",
+            "label": "Review 3"
+          }
+        ]
+      },
+      {
+        "type": "ticker",
+        "name": "ticker area",
+        "settings": [
+          {
+            "id": "ticker1",
+            "type": "html",
+            "label": "ticker 1copy"
+          },
+          {
+            "id": "ticker2",
+            "type": "html",
+            "label": "ticker 2copy"
+          }
+        ]
+      },
+      {
+        "type": "infoblock",
+        "name": "Info block",
+        "settings": [
+          {
+            "id": "img",
+            "type": "image_picker",
+            "label": "png logo"
+          },
+          {
+            "id": "title",
+            "type": "html",
+            "label": "info block title"
+          },
+          {
+            "id": "infoblock",
+            "type": "html",
+            "label": "info block"
+          },
+          {
+            "id": "bg",
+            "type": "color",
+            "label": "bg color "
+          },
+          {
+            "id": "color",
+            "type": "color",
+            "label": "text color"
+          }
+        ]
+      },
+      {
+        "type": "wanderlustblock",
+        "name": "Wanderlust block",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "title"
+          },
+          {
+            "id": "subtitle",
+            "type": "html",
+            "label": "subtitle"
+          }
+        ]
+      },
+      {
+        "type": "iconsblock",
+        "name": "Icons Block",
+        "settings": [
+          {
+            "id": "iconsbg",
+            "type": "color",
+            "label": "Icon area BG"
+          },
+          {
+            "id": "icon1",
+            "type": "image_picker",
+            "label": "Icon 1"
+          },
+          {
+            "id": "icon2",
+            "type": "image_picker",
+            "label": "Icon 2"
+          },
+          {
+            "id": "icon3",
+            "type": "image_picker",
+            "label": "Icon 3"
+          },
+          {
+            "id": "icon4",
+            "type": "image_picker",
+            "label": "Icon 4"
+          },
+          {
+            "id": "icon5",
+            "type": "image_picker",
+            "label": "Icon 5"
+          },
+          {
+            "id": "icon6",
+            "type": "image_picker",
+            "label": "Icon 6"
+          }
+        ]
+      },
+      {
+        "type": "pressblock",
+        "name": "Press block",
+        "settings": [
+          {
+            "id": "press1",
+            "type": "image_picker",
+            "label": "press1"
+          },
+          {
+            "id": "press2",
+            "type": "image_picker",
+            "label": "press2"
+          },
+          {
+            "id": "press3",
+            "type": "image_picker",
+            "label": "press3"
+          },
+          {
+            "id": "press4",
+            "type": "image_picker",
+            "label": "press4"
+          },
+          {
+            "id": "press5",
+            "type": "image_picker",
+            "label": "press5"
+          }
+        ]
+      },
+      {
+        "type": "splitblock",
+        "name": "Genki Split block",
+        "settings": [
+          {
+            "id": "imgleft",
+            "type": "checkbox",
+            "label": "display image on left?"
+          },
+          {
+            "id": "img",
+            "type": "image_picker",
+            "label": "hero img"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "callout title"
+          },
+          {
+            "id": "copy",
+            "type": "html",
+            "label": "callout copy"
+          },
+          {
+            "id": "btnbg",
+            "type": "color",
+            "label": "btn bg"
+          },
+          {
+            "id": "btn",
+            "type": "text",
+            "label": "btn text"
+          },
+          {
+            "id": "btnlink",
+            "type": "url",
+            "label": "btn linkto"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

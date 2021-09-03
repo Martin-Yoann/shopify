@@ -1,0 +1,172 @@
+
+
+
+<div class="genki-contact">
+      
+      <div class="split-content" style="padding: 0;">
+        <img src="{{ section.settings.img | img_url: '1600x' }}">
+      </div>
+      <div class="split-content " style="background: {{ section.settings.bg }}; padding: 0;">
+        <div class="vertical">
+          <h1 style="color: {{ section.settings.color }};">{{ section.settings.title }}</h1>
+          <div  style="color: {{ section.settings.color }};">{{ page.content }}</div>
+
+          <ul class="no-bullets contact-social">
+              {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                    <span class="icon icon-facebook" aria-hidden="true"></span>
+            
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                    <span class="icon icon-twitter" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_pinterest_link != blank %}
+                <li>
+                  <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                    <span class="icon icon-pinterest" aria-hidden="true"></span>
+          
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                    <span class="icon icon-instagram" aria-hidden="true"></span>
+              
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_snapchat_link != blank %}
+                <li>
+                  <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                    <span class="icon icon-snapchat" aria-hidden="true"></span>
+                 
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_google_plus_link != blank %}
+                <li>
+                  <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                    <span class="icon icon-google_plus" aria-hidden="true"></span>
+                  
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_tumblr_link != blank %}
+                <li>
+                  <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                    <span class="icon icon-tumblr" aria-hidden="true"></span>
+                   
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_youtube_link != blank %}
+                <li>
+                  <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                    <span class="icon icon-youtube" aria-hidden="true"></span>
+                
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_vimeo_link != blank %}
+                <li>
+                  <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                    <span class="icon icon-vimeo" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_fancy_link != blank %}
+                <li>
+                  <a href="{{ settings.social_fancy_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                    <span class="icon icon-fancy" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+
+          <div class="quick-contact-form">
+                {% form 'contact' %}
+
+                {% comment %}
+                  Successful message
+                {% endcomment %}
+                {% if form.posted_successfully? %}
+                  <p class="note form-success">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                {% endif %}
+
+                {{ form.errors | default_errors }}
+
+                <div class="grid grid--small">
+                  <div class="grid__item large--one-whole">
+                    <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                    <input type="text" id="ContactFormName" class="input-full" name="contact[{{ 'contact.form.name' | t }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                  </div>
+
+                  <div class="grid__item large--one-whole">
+                    <label for="ContactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+                    <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                  </div>
+                </div>
+
+               {% comment %} <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+                <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ 'contact.form.phone' | t }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">{% endcomment %}
+
+                <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+                <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[{{ 'contact.form.message' | t }}]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+                <input type="submit" class="contact-btn" value="{{ 'contact.form.send' | t }}">
+
+              {% endform %}
+          </div>
+
+        </div>
+      </div>
+     
+</div>
+
+
+{% schema %}
+  {
+    "name": "Genki Contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Page Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Left Image"
+      },
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Color BG"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Color text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Genki Contact",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

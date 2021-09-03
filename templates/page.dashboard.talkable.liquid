@@ -1,0 +1,39 @@
+{% comment %}
+  DO NOT MODIFY MANUALLY
+  This asset is generated automatically by Talkable Integration at 5/25/21 8:51PM
+{% endcomment %}
+<!-- /templates/page.liquid -->
+
+
+
+{% section 'page-banners' %}
+
+
+<div class="general-page">
+  <div class="grid">
+    <div class="grid__item large--five-sixths push--large--one-twelfth">
+
+      {% comment %}
+      <header class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+        <hr class="hr--small">
+      </header>
+      {% endcomment %}
+
+      <div class="grid">
+        <div class="grid__item large--four-fifths push--large--one-tenth">
+          <div class="rte rte--nomargin rte--indented-images">
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <div id="talkable-offer"></div>
+              {% else %}
+                {{ 'Log in' | customer_login_link }}
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

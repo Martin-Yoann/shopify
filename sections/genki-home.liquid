@@ -1,0 +1,1252 @@
+{% comment %}
+<div class="utube-modal">
+  <div class="modalclose utube-modalclose"></div>
+  <div class="js-video ng-isolate-scope embed-wrap"></div>
+</div>
+<div class="utube-overlay"></div>
+{% endcomment %}
+
+<div class="genki-marketing cf">
+  {% for block in section.blocks %}
+  {% case block.type %}
+  <!-- blocks -->
+  {% when 'newbannerblock' %}
+  <div class="full-width-banner masked-banner">
+    <div class="home-caro">
+      {% if block.settings.bannerimgshow == true %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.btnlink }}" style="display:block;">
+          <img class="banner-img hidden-xs" src="{{ block.settings.bannerimg | img_url: '3000x' }}"
+            style=" width: 100%;">
+          <img class="banner-img visible-xs" src="{{ block.settings.bannerimgmobile | img_url: '1000x' }}"
+            style=" width: 100%;">
+          <div class="vertical">
+            <h1>{{ block.settings.title }}</h1>
+            <p>{{ block.settings.subtitle  }}</p>
+            {% if block.settings.btn   != blank %}
+            <div class="btn hero-btn"
+              style="color: {{ block.settings.btncolor }}; background: {{ block.settings.btnbgcolor }};">
+              {{ block.settings.btn }}</div>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% if block.settings.bannerimg2show == true %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.btnlink2 }}" style="display:block;">
+          <img class="banner-img hidden-xs" src="{{ block.settings.bannerimg2 | img_url: '3000x' }}"
+            style=" width: 100%;">
+          <img class="banner-img visible-xs" src="{{ block.settings.bannerimgmobile2 | img_url: '1000x' }}"
+            style=" width: 100%;">
+          <div class="vertical">
+            <h1>{{ block.settings.title2 }}</h1>
+            <p>{{ block.settings.subtitle2  }}</p>
+            {% if block.settings.btn2   != blank %}
+            <div class="btn hero-btn"
+              style="color: {{ block.settings.btncolor2 }}; background: {{ block.settings.btnbgcolor3 }};">
+              {{ block.settings.btn2 }}</div>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% if block.settings.bannerimg3show == true %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.btnlink3 }}" style="display:block;">
+          <img class="banner-img hidden-xs" src="{{ block.settings.bannerimg3 | img_url: '3000x' }}"
+            style=" width: 100%;">
+          <img class="banner-img visible-xs" src="{{ block.settings.bannerimgmobile3 | img_url: '1000x' }}"
+            style=" width: 100%;">
+          <div class="vertical">
+            <h1>{{ block.settings.title3 }}</h1>
+            <p>{{ block.settings.subtitle3  }}</p>
+
+            {% if block.settings.btn3   != blank %}
+            <div class="btn hero-btn"
+              style="color: {{ block.settings.btncolor3 }}; background: {{ block.settings.btnbgcolor3 }};">
+              {{ block.settings.btn3 }}</div>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endif %}
+    
+      {% if block.settings.bannerimg4show == true %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.btnlink4 }}" style="display:block;">
+          <img class="banner-img hidden-xs" src="{{ block.settings.bannerimg4 | img_url: '3000x' }}"
+            style=" width: 100%;">
+          <img class="banner-img visible-xs" src="{{ block.settings.bannerimgmobile4 | img_url: '1000x' }}"
+            style=" width: 100%;">
+          <div class="vertical">
+            <h1>{{ block.settings.title4 }}</h1>
+            <p>{{ block.settings.subtitle4  }}</p>
+
+            {% if block.settings.btn4   != blank %}
+            <div class="btn hero-btn"
+              style="color: {{ block.settings.btncolor4 }}; background: {{ block.settings.btnbgcolor4 }};">
+              {{ block.settings.btn4 }}</div>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endif %}
+
+    </div>
+
+
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="#42264a" />
+
+      </g>
+    </svg>
+
+  </div>
+
+
+
+  <!-- blocks -->
+  {% when 'infoblock' %}
+  <div class="info-block" style="background: #42264a;">
+    <img src="{{ block.settings.img | img_url: '600x' }}">
+    <h1 style="color: {{ block.settings.color }};">{{ block.settings.title }}</h1>
+    <h1 class="copy" style="color: {{ block.settings.color }};">{{ block.settings.infoblock }}</h1>
+  </div>
+
+
+  <!-- blocks -->
+  {% when 'productslider' %}
+  <div class="prod-slider-wrapper">
+    {% if  block.settings.slidertitle != blank %}
+    <div class="slider-titles">
+      <h1>{{ block.settings.slidertitle  }}</h1>
+
+      {% comment %} <a href="{{ block.settings.link2 }}" style="color: #8cb7d7;">{{ block.settings.link2title }}</a>
+      <span style="margin: 0 30px; opacity: .25;">|</span>
+      <a href="{{ block.settings.link1 }}" style="color: #d7a559;">{{ block.settings.link1title }}</a>{% endcomment %}
+
+    </div>
+    {% endif %}
+    <div class="products-caro">
+
+      {% if  block.settings.product1 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product1link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product1btnbg }};"></div>
+          <img class="img1" src="{{ block.settings.product1img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product1btnbg }};">{{ block.settings.product1 }}</h2>
+          {% assign upsell_product = all_products[block.settings.theproduct1] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product1btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product1btnbg }};">Shop Now</div>
+          {% endif %}
+
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product2 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product2link }}" class="grid-product-{{ block.settings.product2link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product2btnbg }};"></div>
+          <img class="img2" src="{{ block.settings.product2img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product2btnbg }};">{{ block.settings.product2 }}</h2>
+          {% assign upsell_product = all_products[block.settings.theproduct2] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product2btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product2btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product3 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product3link }}" class="grid-product-{{ block.settings.product3link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product3btnbg }};"></div>
+          <img class="img3" src="{{ block.settings.product3img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product3btnbg }};">{{ block.settings.product3 }}</h2>
+
+          {% assign upsell_product = all_products[block.settings.theproduct3] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product3btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product3btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product4 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product4link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product4btnbg }};"></div>
+          <img class="img4" src="{{ block.settings.product4img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product4btnbg }};">{{ block.settings.product4 }}</h2>
+
+          {% assign upsell_product = all_products[block.settings.theproduct4] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product4btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product4btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product5 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product5link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product5btnbg }};"></div>
+          <img class="img5" src="{{ block.settings.product5img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product5btnbg }};">{{ block.settings.product5 }}</h2>
+
+          {% assign upsell_product = all_products[block.settings.theproduct5] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product5btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product5btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product6 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product6link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product6btnbg }};"></div>
+          <img class="img6" src="{{ block.settings.product6img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product6btnbg }};">{{ block.settings.product6 }}</h2>
+
+          {% assign upsell_product = all_products[block.settings.theproduct6] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product6btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product6btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+      {% if  block.settings.product7 != blank %}
+      <div class="carousel-cell">
+        <a href="{{ block.settings.product7link }}">
+          {% comment %}<div class="pet"></div>{% endcomment %}
+          <div class="prod-bg" style="background: {{ block.settings.product7btnbg }};"></div>
+          <img class="img7" src="{{ block.settings.product7img | img_url: '900x' }}" style=" width: 100%;">
+          <h2 style="color: {{ block.settings.product7btnbg }};">{{ block.settings.product7 }}</h2>
+
+          {% assign upsell_product = all_products[block.settings.theproduct7] %}
+          <input style="visibility:hidden; display:none;" class="quick-adds active" type="radio" name="varr"
+            data-varid="{{ upsell_product.variants.first.id }}">
+          {% if upsell_product.available %}
+          <div class="mcs-add-to-cart btn shop-now-btn" style="background:  {{ block.settings.product7btnbg }};">Add To
+            Cart &nbsp; | &nbsp; {{ upsell_product.price | money_without_trailing_zeros }}</div>
+          {% if block.settings.theproduct2 contains 'cans'%}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 24</h6>
+          {% else %}
+          <h6 style="margin-top: -5px; font-size: 14px; color: {{ block.settings.product1btnbg }};">*Case Of 15</h6>
+          {% endif %}
+          {% else %}
+          <div class="btn shop-now-btn" style="background:  {{ block.settings.product7btnbg }};">Shop Now</div>
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
+
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- blocks -->
+  {% when 'wanderlustblock' %}
+
+  <div style="height: 110px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+      style="height: 100%; width: 100%;">
+      <path d="M0.00,49.98 C265.79,-35.03 247.74,164.30 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        style="stroke: none; fill: #e0736a;"></path>
+    </svg></div>
+  <div class="wanderlust-contain">
+    <h1>{{ block.settings.title }}</h1>
+    <h2>{{ block.settings.subtitle }}</h2>
+
+
+
+    <div class="bubbles-container">
+      <svg class="bubbles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 1024" style="overflow: visible;">
+
+        <g class="bubbles-large" stroke-width="7">
+          <g>
+            <g transform="translate(10 940)">
+              <circle cx="35" cy="35" r="35" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(373 940)">
+              <circle cx="35" cy="35" r="35" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(408 940)">
+              <circle cx="35" cy="35" r="35" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(621 940)">
+              <circle cx="35" cy="35" r="35" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(179 940)">
+              <circle cx="35" cy="35" r="35" />
+            </g>
+          </g>
+        </g>
+
+        <g class="bubbles-small" stroke-width="4">
+          <g>
+            <g transform="translate(147 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(255 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(573 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(429 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(91 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(640 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(321 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(376 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(376 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+          <g>
+            <g transform="translate(497 984)">
+              <circle cx="15" cy="15" r="15" />
+            </g>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+
+
+  </div>
+  <div style="height: 110px; overflow: hidden; background: #e0736a;"><svg viewBox="0 0 500 150"
+      preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M0.00,49.98 C213.31,-29.11 246.61,176.14 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        style="stroke: none; fill: white;"></path>
+    </svg></div>
+
+  {% comment %}
+  <section class="section section--promo-marquee section--1617121494b2595cfc" data-section-id="1617121494b2595cfc"
+    data-section-type="promo-marquee">
+    <div class="promo-marquee">
+
+      <svg class="marquee-svg-bg" viewBox="0 0 1440 215" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M2059.39 0C1629.7 0 1629.7 91.475 1200.01 91.475C770.343 91.475 770.343 0 340.675 0C-88.9955 0 -88.9955 91.475 -518.67 91.475C-948.334 91.475 -948.335 0 -1378 0V123.263C-948.335 123.263 -948.334 214.737 -518.67 214.737C-88.9955 214.737 -88.9955 123.263 340.675 123.263C770.343 123.263 770.343 214.737 1200.01 214.737C1629.7 214.737 1629.7 123.263 2059.39 123.263C2489.08 123.263 2489.08 214.737 2918.76 214.737V91.475C2489.08 91.475 2489.08 0 2059.39 0Z"
+          fill="#e0736a"></path>
+      </svg>
+      <svg class="marquee-svg" viewBox="0 0 1440 215" fill="none">
+        <path id="curve" fill="transparent"
+          d="m -518 216 C -518 216 -518 216 -518.67 214.737 C -88.9955 214.737 -88.9955 123.263 340.675 123.263 C 770.343 123.263 770.343 214.737 1200.01 214.737 C 1629.7 214.737 1629.7 123.263 2059.39 123.263 C 2489.08 123.263 2489.08 214.737 2918.76 214.737 Z">
+        </path>
+        <text id="marquee-text">
+          <textPath class="thepath" xlink:href="#curve">
+            {{ block.settings.title }}
+          </textPath>
+        </text>
+      </svg>
+
+    </div>
+  </section>{% endcomment %}
+
+
+
+  <!-- blocks -->
+  {% when 'textcalloutblock' %}
+  <div class="text-callout-block">
+    {% if block.settings.title  != blank %}
+    <h1>{{ block.settings.title }}</h1>
+    {% endif %}
+    {% if block.settings.subtitle  != blank %}
+    <div style="paddig-bottom: 30px; font-weight: 400;">{{ block.settings.subtitle }}</div>
+    {% endif %}
+
+    {% if block.settings.linktext  != blank %}
+    <a class="btn stoggle-modal-open" href="{{ block.settings.link }}" target="_blank">{{ block.settings.linktext }}</a>
+    {% endif %}
+  </div>
+
+
+
+
+  <!-- blocks -->
+  {% when 'ticker' %}
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker__item">{{ block.settings.ticker1 }}</div>
+      <div class="ticker__item">{{ block.settings.ticker2 }}</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- blocks -->
+  {% when 'reviews' %}
+  <div class="reviews-area masked-banner2">
+    <div class="">
+      <div class="reviews-block" style="margin-top: 15px;">
+
+        <p style="margin-top: 20px;">{{  block.settings.review1 }}</p>
+
+        <span class="bubble__tail">
+          <svg width="23" height="32" viewBox="0 0 23 32" fill="#000" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.173 0C7.173 0 7.72637 13.9816 6.54788 20.6069C5.85086 24.5254 2.81545 27.6194 0.451534 29.4934C-0.296693 30.0866 0.111526 31.3936 1.06187 31.3011C5.54176 30.865 13.4803 29.4791 20.3009 25.082C30.4585 18.5336 7.173 0 7.173 0Z">
+            </path>
+          </svg>
+        </span>
+      </div>
+      <div class="reviews-block" style="margin-top: -15px; animation-delay: 4s;">
+        <p style="margin-top: 20px;">{{  block.settings.review2 }}</p>
+        <span class="bubble__tail" style="left: auto; right: -7px; transform: scaleX(-1);">
+          <svg width="23" height="32" viewBox="0 0 23 32" fill="#000" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.173 0C7.173 0 7.72637 13.9816 6.54788 20.6069C5.85086 24.5254 2.81545 27.6194 0.451534 29.4934C-0.296693 30.0866 0.111526 31.3936 1.06187 31.3011C5.54176 30.865 13.4803 29.4791 20.3009 25.082C30.4585 18.5336 7.173 0 7.173 0Z">
+            </path>
+          </svg>
+        </span>
+      </div>
+      <div class="reviews-block" style="animation-delay: 6s;">
+        <p style="margin-top: 20px;">{{  block.settings.review3 }}</p>
+        <span class="bubble__tail">
+          <svg width="23" height="32" viewBox="0 0 23 32" fill="#000" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#fff" fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.173 0C7.173 0 7.72637 13.9816 6.54788 20.6069C5.85086 24.5254 2.81545 27.6194 0.451534 29.4934C-0.296693 30.0866 0.111526 31.3936 1.06187 31.3011C5.54176 30.865 13.4803 29.4791 20.3009 25.082C30.4585 18.5336 7.173 0 7.173 0Z">
+            </path>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- blocks -->
+  {% when 'splitblock' %}
+  <div class="genki-split">
+
+    {% if block.settings.imgleft  == true %}
+    <div class="split-content">
+      <img src="{{ block.settings.img | img_url: '1600x' }}">
+    </div>
+    {% endif %}
+    <div class="split-content hidden-xs">
+      <div class="vertical">
+        <h1 class="waypoint fade-in ">{{ block.settings.title }}</h1>
+        {% if block.settings.copy  != blank %}
+        <p>{{ block.settings.copy }}</p>
+        {% endif %}
+        {% if block.settings.btn  != blank %}
+        <a class="btn" style="background: {{ block.settings.btnbg }}"
+          href="{{ block.settings.btnlink }}">{{ block.settings.btn }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if block.settings.imgleft  != true %}
+    <div class="split-content">
+      <img src="{{ block.settings.img | img_url: '1600x' }}">
+    </div>
+    {% endif %}
+
+    <div class="split-content visible-xs">
+      <h1>{{ block.settings.title }}</h1>
+      {% if block.settings.copy  != blank %}
+      <p>{{ block.settings.copy }}</p>
+      {% endif %}
+      {% if block.settings.btn  != blank %}
+      <a class="btn" style="background: {{ block.settings.btnbg }}"
+        href="{{ block.settings.btnlink }}">{{ block.settings.btn }}</a>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+
+
+  <!-- blocks -->
+  {% when 'iconsblock' %}
+  <div class="iconsblock" style="background: {{ block.settings.iconsbg }};">
+    <img class="icon" src="{{ block.settings.icon1 | img_url: '400x' }}">
+    <img class="icon" src="{{ block.settings.icon2 | img_url: '400x' }}">
+    <img class="icon" src="{{ block.settings.icon3 | img_url: '400x' }}">
+    <img class="icon" src="{{ block.settings.icon4 | img_url: '400x' }}">
+    <img class="icon" src="{{ block.settings.icon5 | img_url: '400x' }}">
+    <img class="icon" src="{{ block.settings.icon6 | img_url: '400x' }}">
+  </div>
+
+
+
+
+  <!-- blocks -->
+  {% when 'pressblock' %}
+  <div class="pressblock">
+    <div class="wrapper">
+      <h1>As seen in</h1>
+      <div class="press-img"><img src="{{ block.settings.press1 | img_url: '900x' }}"></div>
+      <div class="press-img hidden-xs"><img src="{{ block.settings.press2 | img_url: '900x' }}"></div>
+      <div class="press-img"><img src="{{ block.settings.press3 | img_url: '900x' }}"></div>
+      <div class="press-img"><img src="{{ block.settings.press4 | img_url: '900x' }}"></div>
+      <div class="press-img"><img src="{{ block.settings.press5 | img_url: '900x' }}"></div>
+
+    </div>
+  </div>
+
+
+
+  {% endcase %}
+
+  {% endfor %}
+</div>
+
+
+
+
+
+{% schema %}
+{
+"blocks": [
+{
+"type": "newbannerblock",
+"name": "New Banner Block",
+"settings": [
+{
+"type": "header",
+"content": "Slide 1"
+},
+{
+"id": "bannerimgshow",
+"type": "checkbox",
+"label": "Display Slide 1?"
+},
+{
+"id": "bannerimg",
+"type": "image_picker",
+"label": "Banner Image"
+},
+{
+"id": "bannerimgmobile",
+"type": "image_picker",
+"label": "Banner Image Mobile"
+},
+{
+"id": "title",
+"type": "html",
+"label": "Banner Title"
+},
+{
+"id": "subtitle",
+"type": "html",
+"label": "Banner Sub Title"
+},
+{
+"id": "btnlink",
+"type": "url",
+"label": "Banner btn Link to"
+},
+{
+"id": "btn",
+"type": "text",
+"label": "Banner btn Text"
+},
+{
+"id": "btncolor",
+"type": "color",
+"label": "Btn color"
+},
+{
+"id": "btnbgcolor",
+"type": "color",
+"label": "Btn BG color"
+},
+{
+"type": "header",
+"content": "Slide 2"
+},
+{
+"id": "bannerimg2show",
+"type": "checkbox",
+"label": "Display Slide 2?"
+},
+{
+"id": "bannerimg2",
+"type": "image_picker",
+"label": "Banner Image2"
+},
+{
+"id": "bannerimgmobile2",
+"type": "image_picker",
+"label": "Banner Image Mobile2"
+},
+{
+"id": "title2",
+"type": "html",
+"label": "Banner Title2"
+},
+{
+"id": "subtitle2",
+"type": "html",
+"label": "Banner Sub Title2"
+},
+{
+"id": "btnlink2",
+"type": "url",
+"label": "Banner btn Link to2"
+},
+{
+"id": "btn2",
+"type": "text",
+"label": "Banner btn Text2"
+},
+{
+"id": "btncolor2",
+"type": "color",
+"label": "Btn color2"
+},
+{
+"id": "btnbgcolor2",
+"type": "color",
+"label": "Btn BG color2"
+},
+{
+"type": "header",
+"content": "Slide 3"
+},
+{
+"id": "bannerimg3show",
+"type": "checkbox",
+"label": "Display Slide 3?"
+},
+{
+"id": "bannerimg3",
+"type": "image_picker",
+"label": "Banner Image3"
+},
+{
+"id": "bannerimgmobile3",
+"type": "image_picker",
+"label": "Banner Image Mobile3"
+},
+{
+"id": "title3",
+"type": "html",
+"label": "Banner Title3"
+},
+{
+"id": "subtitle3",
+"type": "html",
+"label": "Banner Sub Title3"
+},
+{
+"id": "btnlink3",
+"type": "url",
+"label": "Banner btn Link to3"
+},
+{
+"id": "btn3",
+"type": "text",
+"label": "Banner btn Text3"
+},
+{
+"id": "btncolor3",
+"type": "color",
+"label": "Btn color3"
+},
+{
+"id": "btnbgcolor3",
+"type": "color",
+"label": "Btn BG color3"
+},
+{
+"type": "header",
+"content": "Slide 4"
+},
+{
+"id": "bannerimg4show",
+"type": "checkbox",
+"label": "Display Slide 4?"
+},
+{
+"id": "bannerimg4",
+"type": "image_picker",
+"label": "Banner Image4"
+},
+{
+"id": "bannerimgmobile4",
+"type": "image_picker",
+"label": "Banner Image Mobile4"
+},
+{
+"id": "title4",
+"type": "html",
+"label": "Banner Title4"
+},
+{
+"id": "subtitle4",
+"type": "html",
+"label": "Banner Sub Title4"
+},
+{
+"id": "btnlink4",
+"type": "url",
+"label": "Banner btn Link to4"
+},
+{
+"id": "btn4",
+"type": "text",
+"label": "Banner btn Text4"
+},
+{
+"id": "btncolor4",
+"type": "color",
+"label": "Btn color4"
+},
+{
+"id": "btnbgcolor4",
+"type": "color",
+"label": "Btn BG color4"
+}
+]
+},
+{
+"type": "textcalloutblock",
+"name": "Text Callout Blocks",
+"settings": [
+{
+"id": "title",
+"type": "text",
+"label": "Title"
+},
+{
+"id": "subtitle",
+"type": "html",
+"label": "Sub Title"
+},
+{
+"id": "link",
+"type": "url",
+"label": "Link Btn"
+},
+{
+"id": "linktext",
+"type": "text",
+"label": "Link Text"
+}
+]
+},
+{
+"type": "productslider",
+"name": "Product Slider",
+"settings": [
+{
+"id": "slidertitle",
+"type": "text",
+"label": "slider title"
+},
+{
+"id": "link1",
+"type": "url",
+"label": "link1"
+},
+{
+"id": "link1title",
+"type": "text",
+"label": "link1 title"
+},
+{
+"id": "link2",
+"type": "url",
+"label": "link2"
+},
+{
+"id": "link2title",
+"type": "text",
+"label": "link2 title"
+},
+{
+"id": "product1",
+"type": "text",
+"label": "product1"
+},
+{
+"id": "theproduct1",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product1img",
+"type": "image_picker",
+"label": "product1 img"
+},
+{
+"id": "product1btnbg",
+"type": "color",
+"label": "product1 btn bg"
+},
+{
+"id": "product1link",
+"type": "url",
+"label": "product1 link"
+},
+{
+"id": "product2",
+"type": "text",
+"label": "product2"
+},
+{
+"id": "theproduct2",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product2img",
+"type": "image_picker",
+"label": "product2 img"
+},
+{
+"id": "product2btnbg",
+"type": "color",
+"label": "product2 btn bg"
+},
+{
+"id": "product2link",
+"type": "url",
+"label": "product2 link"
+},
+{
+"id": "product3",
+"type": "text",
+"label": "product3"
+},
+{
+"id": "theproduct3",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product3img",
+"type": "image_picker",
+"label": "product3 img"
+},
+{
+"id": "product3btnbg",
+"type": "color",
+"label": "product3 btn bg"
+},
+{
+"id": "product3link",
+"type": "url",
+"label": "product3 link"
+},
+{
+"id": "product4",
+"type": "text",
+"label": "product4"
+},
+{
+"id": "theproduct4",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product4img",
+"type": "image_picker",
+"label": "product4 img"
+},
+{
+"id": "product4btnbg",
+"type": "color",
+"label": "product4 btn bg"
+},
+{
+"id": "product4link",
+"type": "url",
+"label": "product4 link"
+},
+{
+"id": "product5",
+"type": "text",
+"label": "product5"
+},
+{
+"id": "theproduct5",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product5img",
+"type": "image_picker",
+"label": "product5 img"
+},
+{
+"id": "product5btnbg",
+"type": "color",
+"label": "product5 btn bg"
+},
+{
+"id": "product5link",
+"type": "url",
+"label": "product5 link"
+},
+{
+"id": "product6",
+"type": "text",
+"label": "product6"
+},
+{
+"id": "theproduct6",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product6img",
+"type": "image_picker",
+"label": "product6 img"
+},
+{
+"id": "product6btnbg",
+"type": "color",
+"label": "product6 btn bg"
+},
+{
+"id": "product6link",
+"type": "url",
+"label": "product6 link"
+},
+{
+"id": "product7",
+"type": "text",
+"label": "product7"
+},
+{
+"id": "theproduct7",
+"type": "product",
+"label": "ASSIGN PRODUCT FOR DATA"
+},
+{
+"id": "product7img",
+"type": "image_picker",
+"label": "product7 img"
+},
+{
+"id": "product7btnbg",
+"type": "color",
+"label": "product7 btn bg"
+},
+{
+"id": "product7link",
+"type": "url",
+"label": "product7 link"
+}
+]
+},
+{
+"type": "reviews",
+"name": "Reviews area",
+"settings": [
+{
+"id": "review1",
+"type": "html",
+"label": "Review 1"
+},
+{
+"id": "review2",
+"type": "html",
+"label": "Review 2"
+},
+{
+"id": "review3",
+"type": "html",
+"label": "Review 3"
+}
+]
+},
+{
+"type": "ticker",
+"name": "ticker area",
+"settings": [
+{
+"id": "ticker1",
+"type": "html",
+"label": "ticker 1copy"
+},
+{
+"id": "ticker2",
+"type": "html",
+"label": "ticker 2copy"
+}
+]
+},
+{
+"type": "infoblock",
+"name": "Info block",
+"settings": [
+{
+"id": "img",
+"type": "image_picker",
+"label": "png logo"
+},
+{
+"id": "title",
+"type": "html",
+"label": "info block title"
+},
+{
+"id": "infoblock",
+"type": "html",
+"label": "info block"
+},
+{
+"id": "bg",
+"type": "color",
+"label": "bg color "
+},
+{
+"id": "color",
+"type": "color",
+"label": "text color"
+}
+]
+},
+{
+"type": "wanderlustblock",
+"name": "Wanderlust block",
+"settings": [
+{
+"id": "title",
+"type": "text",
+"label": "title"
+},
+{
+"id": "subtitle",
+"type": "html",
+"label": "subtitle"
+}
+]
+},
+{
+"type": "iconsblock",
+"name": "Icons Block",
+"settings": [
+{
+"id": "iconsbg",
+"type": "color",
+"label": "Icon area BG"
+},
+{
+"id": "icon1",
+"type": "image_picker",
+"label": "Icon 1"
+},
+{
+"id": "icon2",
+"type": "image_picker",
+"label": "Icon 2"
+},
+{
+"id": "icon3",
+"type": "image_picker",
+"label": "Icon 3"
+},
+{
+"id": "icon4",
+"type": "image_picker",
+"label": "Icon 4"
+},
+{
+"id": "icon5",
+"type": "image_picker",
+"label": "Icon 5"
+},
+{
+"id": "icon6",
+"type": "image_picker",
+"label": "Icon 6"
+}
+]
+},
+{
+"type": "pressblock",
+"name": "Press block",
+"settings": [
+{
+"id": "press1",
+"type": "image_picker",
+"label": "press1"
+},
+{
+"id": "press2",
+"type": "image_picker",
+"label": "press2"
+},
+{
+"id": "press3",
+"type": "image_picker",
+"label": "press3"
+},
+{
+"id": "press4",
+"type": "image_picker",
+"label": "press4"
+},
+{
+"id": "press5",
+"type": "image_picker",
+"label": "press5"
+}
+]
+},
+{
+"type": "splitblock",
+"name": "Genki Split block",
+"settings": [
+{
+"id": "imgleft",
+"type": "checkbox",
+"label": "display image on left?"
+},
+{
+"id": "img",
+"type": "image_picker",
+"label": "hero img"
+},
+{
+"id": "title",
+"type": "text",
+"label": "callout title"
+},
+{
+"id": "copy",
+"type": "html",
+"label": "callout copy"
+},
+{
+"id": "btnbg",
+"type": "color",
+"label": "btn bg"
+},
+{
+"id": "btn",
+"type": "text",
+"label": "btn text"
+},
+{
+"id": "btnlink",
+"type": "url",
+"label": "btn linkto"
+}
+]
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,216 @@
+  <div class="drawer__inner drawer-left__inner">
+
+    {% comment %}{% if section.settings.drawer_search_enable %}
+      {% include 'search-bar', search_btn_style: 'btn--secondary', search_bar_location: 'search-bar--drawer' %}
+    {% endif %}{% endcomment %}
+
+    <ul class="mobile-nav">
+      {% for link in linklists[section.settings.main_menu_link_list].links %}
+        {% if link.links != blank %}
+          <li class="mobile-nav__item">
+            <div class="mobile-nav__has-sublist">
+              <a
+                href="{{ link.url }}"
+                class="mobile-nav__link"
+                id="Label-{{ forloop.index }}"
+                {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>{{ link.title | escape }}</a>
+              <div class="mobile-nav__toggle">
+                <button type="button" class="mobile-nav__toggle-btn icon-fallback-text" aria-controls="Linklist-{{ forloop.index }}" aria-expanded="false">
+                  <span class="icon-fallback-text mobile-nav__toggle-open">
+                    <span class="icon icon-plus" aria-hidden="true"></span>
+                    <span class="fallback-text">{{ 'general.drawers.expand_submenu' | t }} {{ link.title | escape }}</span>
+                  </span>
+                  <span class="icon-fallback-text mobile-nav__toggle-close">
+                    <span class="icon icon-minus" aria-hidden="true"></span>
+                    <span class="fallback-text">{{ 'general.drawers.collapse_submenu' | t }} {{ link.title | escape }}</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <ul class="mobile-nav__sublist" id="Linklist-{{ forloop.index }}" aria-labelledby="Label-{{ forloop.index }}" role="navigation">
+              {% assign parent_index = forloop.index %}
+              {% for childlink in link.links %}
+                {% if childlink.links != blank %}
+                <li class="mobile-nav__item">
+                  <div class="mobile-nav__has-sublist">
+                    <a
+                      href="{{ childlink.url }}"
+                      class="mobile-nav__link"
+                      id="Label-{{ parent_index }}-{{ forloop.index }}"
+                      {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
+                        {{ childlink.title }}
+                    </a>
+                    <div class="mobile-nav__toggle">
+                      <button type="button" class="mobile-nav__toggle-btn icon-fallback-text" aria-controls="Linklist-{{ parent_index }}-{{ forloop.index }}" aria-expanded="false">
+                        <span class="icon-fallback-text mobile-nav__toggle-open">
+                          <span class="icon icon-plus" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'general.drawers.expand_submenu' | t }} {{ link.title | escape }}</span>
+                        </span>
+                        <span class="icon-fallback-text mobile-nav__toggle-close">
+                          <span class="icon icon-minus" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'general.drawers.collapse_submenu' | t }} {{ link.title | escape }}</span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  <ul class="mobile-nav__sublist mobile-nav__subsublist" id="Linklist-{{ parent_index }}-{{ forloop.index }}" aria-labelledby="Label-{{ parent_index }}-{{ forloop.index }}" role="navigation">
+                    {% for grandchildlink in childlink.links %}
+                      <li class="mobile-nav__item">
+                        <a
+                          href="{{ grandchildlink.url }}"
+                          class="mobile-nav__link"
+                          {% unless request.page_type == 'index' %}{% if grandchildlink.active %}aria-current="page"{% endif %}{% endunless%}>
+                            {{ grandchildlink.title | escape }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% else %}
+                <li class="mobile-nav__item">
+                  <a
+                    href="{{ childlink.url }}"
+                    class="mobile-nav__link"
+                    {% unless request.page_type == 'index' %}{% if childlink.active %}aria-current="page"{% endif %}{% endunless%}>
+                      {{ childlink.title | escape }}
+                  </a>
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+
+          {% else %}
+
+          <li class="mobile-nav__item">
+            <a
+              href="{{ link.url }}"
+              class="mobile-nav__link"
+              {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
+                {{ link.title | escape }}
+            </a>
+          </li>
+
+        {% endif %}
+      {% endfor %}
+      {% comment %}
+        Spacer element
+      {% endcomment %}
+      <li class="mobile-nav__spacer"></li>
+
+      {% comment %}
+        If customer accounts are enabled, provide login and create account links
+      {% endcomment %}
+ {% comment %}     
+ {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+          </li>
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+          </li>
+        {% else %}
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+          </li>
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.create_account' | t | customer_register_link }}
+          </li>
+        {% endif %}
+      {% endif %}{% endcomment %}
+
+      {% for link in linklists[section.settings.drawer_bottom_link_list].links %}
+        <li class="mobile-nav__item mobile-nav__item--secondary"><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <!-- //mobile-nav -->
+
+
+    <img class="site-header__logo-image" src="https://cdn.shopify.com/s/files/1/0376/8578/8812/files/logogenki2-01.svg?v=1619802623"  itemprop="logo" style="display: block; width: 120px; margin: 15px;">
+
+    <ul class="no-bullets social-icons" style="padding: 15px;">
+              {% if settings.social_facebook_link != blank %}
+                <li style="display:  inline-block;">
+                  <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                    <span class="icon icon-facebook" aria-hidden="true"></span>
+            
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_twitter_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                    <span class="icon icon-twitter" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_pinterest_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                    <span class="icon icon-pinterest" aria-hidden="true"></span>
+          
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_instagram_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                    <span class="icon icon-instagram" aria-hidden="true"></span>
+              
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_snapchat_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                    <span class="icon icon-snapchat" aria-hidden="true"></span>
+                 
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_google_plus_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                    <span class="icon icon-google_plus" aria-hidden="true"></span>
+                  
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_tumblr_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                    <span class="icon icon-tumblr" aria-hidden="true"></span>
+                   
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_youtube_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                    <span class="icon icon-youtube" aria-hidden="true"></span>
+                
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_vimeo_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                    <span class="icon icon-vimeo" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_fancy_link != blank %}
+                <li  style="display:  inline-block;">
+                  <a href="{{ settings.social_fancy_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                    <span class="icon icon-fancy" aria-hidden="true"></span>
+               
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+
+  </div>
+

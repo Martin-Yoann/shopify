@@ -1,0 +1,51 @@
+
+
+
+<!-- // NEW DROPDOWNS -->
+<div class="ziz-dropdown-2020 shopall-dropdown ">
+
+  <div class=" shop-all-products cf" style="postition: relative;">
+
+    
+    {% if  settings.droplink2title  != blank %}
+    <a class="drop-drop-link" href="{{ settings.droplink2 }}" style="background: #fff5e3;">
+      <img style="    width: 80px;
+    margin-top: 35px;"  src="{{ settings.droplink2img | img_url: '600x' }}"  style=" width: 100%;">
+      <div class="drop-copy">
+        <h2>{{ settings.droplink2title }}</h2>
+         {% comment %}<img src="https://cdn.shopify.com/s/files/1/0376/8578/8812/files/sqigg.png?v=1619064083" style="width: 100px; margin: 0px 0 15px;">{% endcomment %}
+        <p>{{ settings.droplink2subtitle }}</p>
+        <div class="shopbtn" style="color: #e0655f;">Shop Now</div>
+      </div>
+    </a>
+     {% endif %}
+
+     {% if  settings.droplink1title  != blank %}
+    <a class="drop-drop-link" href="{{ settings.droplink1 }}"  style="background: white;">
+      <img style="width: 100px;" src="{{ settings.droplink1img | img_url: '600x' }}"  style=" width: 100%;">
+      <div class="drop-copy">
+        <h2>{{ settings.droplink1title }}</h2>
+        {% comment %}<img src="https://cdn.shopify.com/s/files/1/0376/8578/8812/files/sqigg.png?v=1619064083" style="width: 100px; margin: 0px 0 15px;">{% endcomment %}
+        <p>{{ settings.droplink1subtitle }}</p>
+        <div class="shopbtn" style="color: #d7a559;">Shop Now</div>
+      </div> 
+    </a>
+    {% endif %}
+    {% if  settings.droplink3title  != blank %}
+    <a class="drop-drop-link" href="{{ settings.droplink3 }}">
+      <img style="width: 70px;"  src="{{ settings.droplink3img | img_url: '600x' }}"  style=" width: 100%;">
+      <div class="drop-copy">
+        <h2>{{ settings.droplink3title }}</h2>
+         {% comment %}<img src="https://cdn.shopify.com/s/files/1/0376/8578/8812/files/sqigg.png?v=1619064083" style="width: 100px; margin: 0px 0 15px;">{% endcomment %}
+        <p>{{ settings.droplink3subtitle }}</p>
+      </div>
+    </a>
+     {% endif %}
+
+  </div>
+ 
+</div>
+<!-- //  NEW DROPDOWN -->
+
+
+

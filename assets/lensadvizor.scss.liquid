@@ -1,0 +1,1074 @@
+body.la-modal-open {
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: "Helvetica";
+    src: url("https://cdn.shopify.com/s/files/1/0341/4907/3029/files/Helvetica.ttc?v=1592467648") format("opentype");
+}
+
+.la-modal-wrapper *:not(.fas) {
+    font-family: Helvetica !important;
+    font-style: unset;
+}
+
+.la-select-lenses-btn {
+    font-weight: 600;
+    display: none;
+    border: 0 !important;
+    outline: 0 !important;
+    width: 100%;
+    padding: 12px;
+    border-radius:5px;
+    /*font-size: 16px;*/
+    &:focus {
+        outline: 0 !important;
+    }
+}
+
+.la-modal-wrapper {
+
+    #review-lens-manual-prescription {
+        font-size: 16px;
+    }
+
+    .error-file, .error-file-manually {
+        color: #f1411b;
+        display: none;
+    }
+
+    .la-contact-lens-body {
+        display: block;
+    }
+
+    #myPrescription {
+        @media (min-width: 768px) and (max-width: 1199px) {
+            background: #ffffff !important;
+        }
+    }
+
+    .la-prescription_type_trail {
+        padding: 20px;
+
+        @media (min-width: 1200px) and (max-width: 1439px) {
+            position: absolute;
+            bottom: 0;
+            align-items: center;
+            left: 30%;
+        }
+
+        @media (min-width: 1440px) {
+            position: absolute;
+            bottom: 0;
+            align-items: center;
+            left: 35%;
+        }
+    }
+
+    .la-tab-pane {
+        padding: 0px 15px 0 15px !important;
+        @media (min-width: 768px) and (max-width: 1199px) {
+            padding: 0px 30px 0 30px !important;
+        }
+        @media (min-width: 1200px) {
+            padding: 0px 40px 0 40px !important;
+        }
+    }
+
+    #cover-spin {
+        position:fixed;
+        width:100%;
+        left:0;right:0;top:0;bottom:0;
+        background-color: rgba(255,255,255,0.7);
+        z-index:9999;
+        display:none;
+    }
+    
+    @-webkit-keyframes spin {
+        from {-webkit-transform:rotate(0deg);}
+        to {-webkit-transform:rotate(360deg);}
+    }
+    
+    @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
+    
+    #cover-spin::after {
+        content:'';
+        display:block;
+        position:absolute;
+        left:48%;top:40%;
+        width:40px;height:40px;
+        border-style:solid;
+        border-color:black;
+        border-top-color:transparent;
+        border-width: 4px;
+        border-radius:50%;
+        -webkit-animation: spin .8s linear infinite;
+        animation: spin .8s linear infinite;
+    }
+
+    label {
+        margin-top: 0 !important;
+        text-transform: initial !important;
+    }
+    .la-modal {
+        opacity: 1 !important;
+        z-index: 10000;
+    }
+    .la-modal-body {
+        padding: unset !important
+    }
+    
+    .prescription-modal-content{
+        overflow-y: scroll;
+        height: 100%;
+        @media (max-width: 1199px) {
+            box-shadow: 0px 0px 99px #0000000F !important;
+        }
+    }
+    
+    .prescription-body{
+        height: 100%;
+        overflow-x: hidden;
+        @media (min-width: 1200px){
+            padding: 0px 60px;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+    }
+
+    /*.upload-option {
+        padding: 0px 20px 0 20px !important;
+
+    }*/
+    #add_prescription {
+        @media (min-width: 1200px){
+            padding: 0px 40px !important;
+        }
+    }
+    
+    .prescription-details{
+        // height is 100vh - 140 because 60px save and continue and 80px headeraer navigation tab
+        display: unset;
+        border-top: unset;
+        padding: unset;
+        height: auto;
+        @media (min-width: 1200px){
+            height: calc(100vh - 140px);
+            overflow-y: scroll;
+        }
+    }
+    
+    .banner-image-container{
+        width: 100%;
+        height: auto;
+        margin-top: 54px;
+        @media (min-width: 1200px){
+            height: 100vh;
+            margin-top: 0px;
+        }
+    }
+    
+    .banner-image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain !important;
+    }
+    
+    .prescription-tabs{
+        justify-content: center !important;
+        align-items: center !important;
+        height: 54px;
+        pointer-events: none;
+        @media (min-width: 1200px){
+            height: 80px;
+        }
+    }
+    
+    .prescription-tabs li{
+        margin: 0px 4px;
+        @media (min-width: 1200px){
+            margin: 0px 9px;
+        }
+    }
+    
+    .prescription-modal{
+        background: #ffffff !important;
+        max-width: 100vw !important;
+        margin: 0px !important;
+        top: 0% !important;
+        left: 0% !important;
+        bottom: 100% !important;
+        transform: translate(0%, 0%) !important;
+        .close{
+            position: absolute;
+            top: 7px;
+            right: 15px;
+            z-index: 100;
+            font-size: 35px;
+            font-weight: 100;
+            @media (min-width: 768px){
+                top: 15px;
+            }
+            @media (min-width: 1200px) {
+                top: 20px;
+                right: 40px;
+            }
+        }
+        @media (min-width: 768px) {
+            max-width: 80vw !important;
+            left: unset !important;
+            margin: 0 auto !important;
+        }
+        @media (min-width: 1200px) {
+            max-width: 100vw !important;
+            left: 0% !important;
+        }
+    }
+    
+    .header{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        box-shadow: 0px 3px 6px #0000000D;
+        background-color: #fff;
+        z-index: 1;
+        @media (min-width: 1200px) {
+            position: static;
+            box-shadow: none;
+        }
+    }
+    
+    .back-button{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: auto;
+        height: 20px;
+        @media (min-width: 768px){
+            top: 20px;
+        }
+        @media (min-width: 1200px){
+            top: 28px;
+            left: 40px;
+        }
+    }
+    
+    .back-button:hover{
+        cursor: pointer;
+    }
+    
+    .back-button img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    
+    // Labels
+    .prescription-type label , .prescription-upload label, .la_choose-options-container .la-each-card-carousel label, .prescription-choose-lens .form-check-label, #label-prescription-upload, #prescription_upload_manually_wrapper label {
+        width: 100%; 
+        padding:15px 35px;
+        border: 1px solid #DFE3E8;
+        transition: all 0.3s;
+        border-radius: 4px;
+        font-size:16px;
+        position:relative;
+        text-align:center;
+        cursor:pointer;
+    }
+
+    .prescription-upload label{
+        padding:15px 55px;
+    }
+      
+    .prescription-type input[type="radio"] {
+        display: none;
+    }
+      
+    .prescription-type input[type="radio"]:checked + label {
+        border: 0px;
+        color: #fff;
+    }
+
+    // prescription type ends
+
+    // prescription uploads
+    .prescription-upload .image-container, .choose-file-image-container{
+        width:40px;
+        height:40px;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        border: 1px solid #DFE3E8;
+        border-radius: 4px;
+        padding:5px;
+        line-height:1;
+    }
+
+    .prescription-upload .image-container img, .choose-file-image {
+        width: 100%;
+        height: 100%;
+        line-height:1;
+    }
+      
+    .prescription-upload label h6{
+        text-transform: capitalize;
+        font-size: 16px;
+        margin-bottom:0px;
+    }
+    
+    .prescription-upload label p{
+        margin-bottom: 0px;
+        font-size: 13px;
+        font-family: Helvetica;
+        font-weight: normal;
+        @media (min-width: 1200px){
+            font-size: 16px;
+        }
+    }
+      
+    .choose-file-text{
+      font-size:16px;
+      line-height:1;
+    }
+  
+    .prescription-upload input[type="radio"] {
+        display: none;
+    }
+      
+    .prescription-upload .image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    // prescription uploads ends
+    
+    .tab-heading{
+        letter-spacing: inherit;
+        text-transform: capitalize;
+        font-size: 18px;
+        padding:35px 0px;
+        font-family: Helvetica;
+        font-weight: bold;
+        margin-bottom: 0 !important;
+        color: #000;
+        @media (min-width: 1200px){
+            font-size: 24px;
+            padding-top:20px;
+            padding-bottom: 40px;
+        }
+    }
+
+    /*.heading-border-bottom {
+        border-bottom: 5px solid #fafafb !important;
+    }*/
+    
+    .la-modal-columns{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .prescription-body .la-nav-link{
+        width: 7px;
+        height: 7px;
+        padding: 0px !important;
+        background-color: #000 !important;
+        border-radius: 50% !important;
+        transition: all 0.2s;
+    }
+    
+    .prescription-body .la-nav-link.active{
+        width: 12px;
+        height: 12px;
+    }
+    
+    /*.upload-file {
+        background-color: #F8F8F8;
+        padding: 30px 0px;
+        @media (min-width: 1200px){
+            padding: 30px 0px;
+        }
+    }*/
+    
+    .upload-file p{
+        font-size: 16px;
+        font-weight: normal;
+        font-family: Helvetica;
+/*         @media (min-width: 1200px){
+            font-size: 16px;
+        } */
+    }
+    
+    .upload-file h6{
+        text-transform: capitalize;
+        margin-top: 8px;
+        font-size: 13px;
+        font-family: Helvetica;
+        font-weight: bold;
+        @media (min-width: 1200px){
+            font-size: 16px;
+        }
+    }
+    
+    .upload-file #prescription-upload{
+        position: absolute;
+        right: -9999px;
+        visibility: hidden;
+        opacity: 0;
+        margin-top: 20px;
+    }
+    
+    .upload-file label, #label-prescription-upload-manually{
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        overflow: hidden;
+        /*background: #F8F8F8;*/
+        margin-bottom: 10px !important;
+        padding: 10px 20px;
+        border: 1px solid #DFE3E8;
+        /*font-size: 14px;*/
+        border-radius:4px;
+    }
+    
+    .save-continue,.add-cart{
+        background: #F1411A 0% 0% no-repeat padding-box;
+        color: #fff;
+        font-size: 16px;
+        padding: 16px;
+        margin:30px 0px;
+        font-weight: bold;
+        // position: absolute;
+        // left: 0px;
+        width: 100%;
+        clear: both;
+        // bottom: 0px;
+        // height: 60px;
+        @media (min-width: 768px) {
+            font-size: 18px;
+        }
+    }
+    
+    .save-continue:hover,.add-cart:hover{
+        cursor: pointer;
+    }
+    
+    .save-continue p,.add-cart p{
+        margin-bottom: 0px;
+        font-weight: bold !important;
+    }
+    
+    .upload-option{
+        display: block;
+    }
+    
+    .manual-option{
+        display: none;
+    }
+
+    .manual-option .od-left,
+    .manual-option .od-right,
+    .upload-manual-option .od-left,
+    .upload-manual-option .od-right {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        @media (min-width: 1200px){
+            justify-content: space-between;
+        }
+    }
+    
+    .manual-option .od-left .od-dropdown,
+    .manual-option .od-right .od-dropdown,
+    .upload-manual-option .od-left .od-dropdown,
+    .upload-manual-option .od-right .od-dropdown  {
+        width: 30%;
+        margin-right: 3%;
+        /*margin-bottom: 20px;*/
+        @media (max-width: 500px){
+            margin-bottom: 1%;
+        }
+        @media (min-width: 1200px){
+            width: 22%;
+            margin-right: 1%;
+        }
+    }
+    
+    .od-dropdown select{
+        -webkit-appearance: none !important;
+        border: 1px solid #C1C1C1;
+        background-color: #fff;
+        width: 100%;
+        padding: 6px 20px;
+        font-style: normal;
+        font-size: 14px;
+        font-family: Helvetica;
+        font-weight: normal;
+        background: url("https://cdn.shopify.com/s/files/1/0341/4907/3029/files/Down_arrow.svg?v=1592472800") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 5px center !important;
+        @media (min-width: 768px) {
+            background-position: right 15px center !important;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    }
+    
+    .od-left-container, .od-right-container, .la-option-carousel-container{
+        padding-bottom: 30px;
+        border-bottom: 1px solid #DFE3E8;
+        margin-bottom: 25px;
+        h6 {
+            font-size: 16px;
+            font-family: Helvetica;
+            font-weight: bold;
+            margin-bottom: 15px !important;
+            text-transform: initial !important;
+        }
+    }   
+    
+    .od-dropdown-text{
+      margin-bottom: 5px;
+      font-size: 13px;
+      text-align: left;
+      font-family: Helvetica;
+      /*
+        @media (min-width: 768px) {
+            font-size: 13px;
+        }*/
+    }
+    
+    .b-direction-last{
+        @media (max-width: 1200px) {
+            margin-top:15px;
+        }
+      
+    }
+      
+    
+    .select-prescription-container, .add-prescription-container{
+        margin-bottom: 10px;
+    }
+    
+    .text-select-prescription, .prescription-choose-lens .radio-pricing, .la-title-carousel-items-pricing{
+        margin:0px;
+        text-align:center;
+        color:#858585;
+        font-size:14px;
+    }
+    
+    
+    .review-text{
+      margin-bottom: 5px;
+      font-size: 16px;
+      font-family: Helvetica;
+      font-style: normal;
+      font-weight: bold;
+      //@media (min-width: 1200px) {
+      //  font-size: 16px;
+      //}
+    }
+    
+    .review-text-heading{
+        letter-spacing: initial;
+        font-size: 16px;
+        display: inline-block;
+        width: 85%;
+        position: relative;
+        left: -3%;
+    }
+    
+    .review-text-heading span{
+        font-weight: 600;
+        display: inline-block
+    }
+    
+    .order-notes{
+        width: 100%;
+        border: 1px solid #BCBCBC;
+        background-color: #fff;
+        height: auto;
+    }
+    
+    .sub-total{
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 25px;
+        padding-top: 25px;
+        @media (min-width: 1200px) {
+            padding-top: 40px;
+        }
+        .sub-total-title {
+            font-size: 14px;
+            font-family: Helvetica;
+            font-weight: bold;
+            color: #000;
+            @media (min-width: 1200px) {
+                font-size: 20px;
+            }
+        }
+        .sub-total-price {
+            font-size: 14px;
+            font-family: Helvetica;
+            font-weight: bold;
+            color: #000;
+            @media (min-width: 1200px) {
+                font-size: 20px;
+            }
+        }
+    }
+    
+    .pricing-list{
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: normal !important;
+        margin-bottom: 20px;
+        font-family: Helvetica;
+        @media (min-width: 1200px) {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+    }
+    
+    .selected-file, .js-manually-selected-file {
+        display: none;
+        word-break: break-all;
+        margin-bottom:15px;
+        text-align: center;   
+        color:#858585;
+    }
+    
+    .js-manually-selected-file p{
+        margin-bottom: 0px;
+        color: red;
+    }
+    .enter-manually-od-right {
+        margin-bottom:20px;
+        /*padding-bottom: 10px;
+        @media (min-width: 768px) {
+            padding-bottom: 15px;
+        }*/
+    }
+  
+  
+    .diopters-select{
+      border-bottom:none !important;
+      padding-bottom: 0px !important;
+    }
+  
+    .js-prism-values-od-right-left-wrapper{
+      margin-top:25px;
+    }
+  
+    .od-container--modifier {
+        /*padding-bottom: 10px !important;*/
+        label {
+            font-size: 12px !important;
+            font-family: Helvetica;
+            font-weight: normal;
+            font-style: normal !important;
+            // color: #000;
+            margin-top: 0 !important;
+            @media (min-width: 768px) {
+                font-size: 13px !important;
+            }
+        }
+        input {
+            margin-top: 2px !important;
+            @media (min-width: 1200px) {
+                margin-top: 3px !important;
+            }
+        }
+    }
+    .od-left-pd--modifier, .od-left-pd-on-upload--modifier {
+        justify-content: flex-start !important;
+        .od-dropdown {
+            @media (min-width: 1200px) {
+                margin-right: 4% !important;
+            }
+        }
+    }
+    #prescription_upload_manually_wrapper {
+        padding-bottom: 0px !important;
+        border-bottom:none !important;
+        text-align: initial !important;
+        input[type='file'] {
+            position: absolute;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            top: 0;
+        }
+        .paragraph-wrapper-choose-file {
+            border: 1px solid #DFE3E8;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius:4px;
+            text-align:center;
+            margin-bottom: 0 !important;
+        }
+      
+        //.paragraph-wrapper-choose-file:hover{
+          //background-color: #fafafb;
+          //border: 1px solid #333;
+        //}
+   
+
+        .upload-paragraph {
+            font-size: 16px;
+            margin-bottom: 15px ;
+/*             @media (min-width: 768px) {
+                font-size: 16px !important;
+            } */
+        }
+
+    }
+    .save-continue--modifier {
+        position: relative !important;
+        font-family: Helvetica !important;
+        // right: 0 !important;
+        // left: 0;
+        width: 100%;
+        text-align: center !important;
+        // @media (min-width: 1200px) {
+        //  left: calc(100% - 41.666667%) !important;
+        // }
+    }
+    // ============== Choose Lens ==============
+    .prescription-choose-lens {
+        text-align: initial;
+        h3 {
+            font-size: 18px;
+            font-family: Helvetica;
+            font-weight: bold;
+            @media (min-width: 768px) {
+                font-size: 24px;
+            }
+        }
+        .tab-subheading {
+            font-size: 14px;
+            font-family: Helvetica;
+            font-weight: normal;
+            margin-bottom: 0;
+            @media (min-width: 768px) {
+                font-size: 16px;
+            }
+        }
+        /*.headings-wrapper-choose-lens {
+            padding: 20px 20px 0px 5px !important;
+            @media (min-width: 768px) {
+                padding: 20px 30px 0px 30px !important;
+            }
+            @media (min-width: 1200px) {
+                padding: 20px 50px 0px 50px !important;
+            }
+        }*/
+        .choose-lens-card {
+            padding-bottom: 25px;
+            border-bottom: 1px solid #DFE3E8;
+            margin-bottom:30px;
+            @media (min-width: 768px) {
+                /*padding: 30px 10px 10px 10px !important;*/
+            }
+            @media (min-width: 1200px) {
+                /*padding: 30px 10px 5px 10px !important;*/
+            }
+            h6 {
+                font-family: Helvetica;
+                font-weight: bold;
+                margin-bottom: 15px !important;
+                color: #333;
+                font-size: 16px;
+            }
+            p {
+                font-size: 14px;
+                font-family: Helvetica;
+                font-weight: normal;
+                color: #333;
+                //@media (min-width: 768px) {
+                //    font-size: 16px;
+                //}
+            }
+        }
+      
+        .choose-lens-card:last-of-type {
+          border-bottom: 0px;
+        }
+      
+        .form-check-input {
+            margin-left: 0 !important;
+            margin-top: 3px !important;
+              @media (min-width: 1200px){
+                margin-top: 5px !important;
+              }
+            display:none;
+        }
+            
+        .form-check {
+            margin-bottom: 8px;
+            padding-left: 0 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            flex-direction: row !important;
+        }
+    }
+    
+    
+    .form-check-input {
+        margin-left: 0 !important;
+    }
+    .row--modifier {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .subtotal {
+        font-family: Helvetica !important;
+        /*bottom: 60px;*/
+        /*padding-top: 10px;*/
+        font-weight: bold;
+        width: auto !important;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        .row {
+            margin: unset;
+            .col {
+                padding-right: unset;
+                padding-left: unset;
+            }
+        }
+    }
+    
+    .la-error-popdown {
+        color: #fff;
+        background: #af1200;
+        font-family: Helvetica;
+        display: none;
+        text-align: center;
+        margin: 0;
+        padding: 2px 0;
+        font-size: 11px;
+        @media (min-width: 1200px) {
+            padding: 8px 0;
+            font-size: 13px;
+            position: fixed;
+        }
+    }
+    
+    .product-title-below-modal-image {
+        position: absolute !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: transparent !important;
+        display: block;
+        padding:10px;
+        @media (max-width: 767px) {
+            left: unset;
+            bottom: unset;
+            position: relative !important;
+        }
+        @media (min-width: 768px) {
+          padding-bottom:20px;
+        }
+        p {
+            text-align: center;
+            /*color: #000000 !important;*/
+            font-size: 10px !important;
+            padding: 0px 3px;
+            font-family: Helvetica;
+            margin-bottom: 0 !important;
+            /*font-weight: normal !important;
+            line-height: initial !important;*/
+            @media (max-width: 767px) {
+                
+                /*margin-top: 1rem;
+                font-size: unset !important;
+                font-weight: unset !important;
+                margin-bottom: unset !important;
+                line-height: unset !important;*/
+            }
+            @media (min-width: 768px) {
+                font-size: 16px !important;
+            }/*
+            @media (min-width: 1200px) {
+                font-size: 20px !important;
+            }*/
+        }
+    }
+    #la-modal-columns-box-shadow {
+        box-shadow: 0px 0px 99px #0000000F !important;
+    }
+    .pd-label-text-initial {
+        text-transform: initial !important;
+    }
+
+    /* Please Review Your Order Styling */
+    .review-item{
+      width:100%;
+    }
+
+    .review-left{
+      float: left;
+      width: 70%;
+      text-align:left;
+    }
+
+    .review-right{
+      float: right;
+      width: 25%;
+      text-align:right;
+    }
+
+    .review-item-title{
+      font-weight: bold;
+      color: #333;
+      margin-bottom:5px;
+    }
+
+    .review-item-variant{
+      color:#858585;
+      margin-bottom:0px;
+    }
+
+    #review_selection hr{
+      margin-top:1.5rem;
+      margin-bottom:1.5rem;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+
+    .la-add-to-cart, .save-continue {
+        width: 100%;
+        border: unset;
+        border-radius:4px;
+
+        &:disabled {
+            background: #333 !important;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .la_choose-options-container {
+
+        .la-each-card-carousel {
+            //margin: 0 10px;
+
+            label {
+                border: 1px solid #DFE3E8;
+                width: 100%;
+                text-align: center;
+                padding:15px 35px;
+                border-radius: 4px;
+                //@media (min-width: 768px) {
+                //    padding: 12px 10px;
+                //}
+
+                //@media (min-width: 1200px) {
+                //    padding: 15px;
+                //}
+
+                //&:hover {
+                //  background-color: #fafafb;
+                //  border: 1px solid #333;
+                //}
+            }
+        }
+
+        .la-option-carousel-option1,
+        .la-option-carousel-option2,
+        .la-option-carousel-option3 {
+            display: flex;
+            flex-wrap: wrap;
+
+            .la-each-card-carousel {
+                width: 100%;
+                display: inline-flex;
+                padding: 0px;
+                min-height: 100%;
+                align-items: stretch;
+            }
+        }
+
+        .la-carousel-img-wrapper {
+            margin: 0 auto;
+            height: 90px;
+            width: 80px;
+        }
+
+        .la-carousel-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .la-title-carousel-items {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .la-carousel-radio {
+            display: none;
+        }
+
+        .la-carousel-heading {
+            font-family: Helvetica;
+            font-weight: bold;
+            margin-bottom: 15px !important;
+            color: #333;
+            font-size: 16px;
+        }
+    }
+
+    .choose_options_price {
+        margin-bottom: 10px;
+        font-weight: normal
+    }
+
+    #exampleRadios1, #exampleRadios2, #primeRadio1, #primeRadio2, #pd_on_upload1, #pd_on_upload2 {
+        margin-top:0px;
+        top:0px;
+        left:0px;
+    }
+
+    #pd-container-upload{
+      border-bottom:none;
+    }   
+
+    .la-iso-bootstrap .la-modal-content {
+        border: 0 !important;
+    }
+
+    .la-iso-bootstrap .form-check-input {
+        position: absolute;
+        margin-top: 0px;
+        margin-left: 0px;
+        top: 15px;
+        left: 10px;
+    }
+
+}
+
+.display-initial-css-price {
+    display: inherit !important;
+}
+
+.la-label_button:hover{
+  background-color:#fafafb;
+}
+
+
